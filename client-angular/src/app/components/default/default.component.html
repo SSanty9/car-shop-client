@@ -1,0 +1,38 @@
+<div class="loading" *ngIf="!cars">
+Loading
+</div>
+
+<div class="col-md-12" *ngIf="cars">
+  	<h2>{{title}}</h2>
+	<br>
+	<table class="table table-hover table-striped">
+		<tr>
+			<th class="col-lg-7">Car</th>
+			<th>Price</th>
+			<th>Is for Sale?</th>
+			<th>Actions</th>
+		</tr>
+
+		<tr *ngFor="let car of cars">
+		    <td class="col-lg-7">
+		    	<a [routerLink] ="['/car',car.id]">{{car.title}}</a>
+		    </td>
+		    <td>
+		    	{{car.price}}
+		    </td>
+		    <td>
+			    <span *ngIf="car.status == 'true'">
+					Yes
+			    </span>
+			    <span *ngIf="car.status == 'false'">
+					No
+			    </span>
+
+		    </td>
+		    <td>
+				<a [routerLink] = "['/edit-car', car.id]" class="btn btn-warning">Edit</a>
+				<a (click)="deleteCar(car.id)" class="btn btn-danger">Delete</a>
+		    </td>
+	    	</tr>
+	</table >
+</div>

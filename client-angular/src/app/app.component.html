@@ -1,0 +1,42 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!-- HEADER-->
+<header id="header">
+  <div class="navbar navbar-default">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="">
+        CAR SHOP
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="nav navbar-nav">
+        <li>
+          <a [routerLink] = "['']">Home</a>
+        </li>
+        <li *ngIf="identity">
+          <a [routerLink] = "['create-car']">Create Car</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="!identity">
+        <li>
+          <a [routerLink] = "['login']">Sign up</a>
+        </li>
+        <li>
+          <a [routerLink] = "['register']">Register</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="identity">
+        <li>
+          <a href="#">{{identity.name + ' ' + identity.surname}}</a>
+        </li>
+        <li>
+          <a [routerLink] = "['logout', 1]">
+            <span class="glyphicon glyphicon-log-out"></span>
+            Exit </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- CONTENT -->
+<router-outlet></router-outlet>

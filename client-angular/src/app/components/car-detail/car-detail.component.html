@@ -1,0 +1,12 @@
+<div class="col-md-12" *ngIf="car">
+	<h1>{{car.title}}</h1>
+	<p>
+		<span *ngIf="car.status =='true'"><strong>This car is for sale</strong></span>
+	</p>
+	<p>
+		{{car.price}} €
+	</p>
+	<p>
+		{{car.description}}
+	</p>
+</div>

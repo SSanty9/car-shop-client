@@ -1,0 +1,49 @@
+<div class="col-md-12" *ngIf="page_title">
+    <h2>{{page_title}}</h2>
+    <div class="alert alert-danger" *ngIf ="status_car =='error'">
+        The car is not save correctly. Try again
+    </div>
+    <div class="alert alert-success" *ngIf ="status_car =='success'">
+        The car has been save correctly !!
+    </div>
+    <form #carNew ="ngForm" (ngSubmit) = "onSubmit(carNew)" class="col-md-5">
+        <p>
+            <label for="title">Title</label>
+            <input type="text" name="title" #title="ngModel" [(ngModel)] = "car.title" required class="form-control"/>
+            <span *ngIf="!title.valid && title.touched">
+                The title is not valid !!
+            </span>
+        </p>
+
+        <p>
+            <label for="description">Description</label>
+            <textarea name="description" #description="ngModel" [(ngModel)] = "car.description" required class="form-control"></textarea>
+            <span *ngIf="!description.valid && description.touched">
+                The description is not valid !!
+            </span>
+        </p>
+
+        <p>
+            <label for="price">Price</label>
+            <input type="text" name="price" #price="ngModel" [(ngModel)] = "car.price" required class="form-control"/>
+            <span *ngIf="!price.valid && price.touched">
+                The price is not valid !!
+            </span>
+        </p>
+
+        <p>
+            <label for="status">Is for sale?</label>
+            <select name="status" #status="ngModel" [(ngModel)] = "car.status" class="form-control" required>
+                <option value="true" selected="selected">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <span *ngIf="!title.valid && title.touched">
+                The title is not valid
+            </span>
+        </p>
+
+        <!--button-->
+        <input type="submit" value="Save" class="btn btn-success" [disabled] ="!carNew.form.valid">
+
+    </form>
+</div>
